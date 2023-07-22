@@ -17,6 +17,24 @@ export class ProductsService {
 
     async getAllProduct() {
         const products = await this.productModel.find().exec();
-        return [...products]
+        return products.map(prod => ({
+            id: prod.id,
+            title: prod.title,
+            price: prod.price,
+            brand: prod.brand,
+            imgUrl: prod.imageUrl
+        }))
+    }
+
+    async searchProduct(keyword: string) {
+        const regex = new RegExp(keyword, 'i');
+        const result = await this.productModel.find({ title: { $regex: regex } });
+        return result.map(prod => ({
+            id: prod.id,
+            title: prod.title,
+            price: prod.price,
+            brand: prod.brand,
+            imgUrl: prod.imageUrl
+        }))
     }
 }
