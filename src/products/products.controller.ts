@@ -16,7 +16,8 @@ export class ProductsController {
     }
 
     @Get()
-    getAllProducts(): object {
-        return { name: this.productSerive.text }
+    async getAllProducts() {
+        const products = await this.productSerive.getAllProduct()
+        return products;
     }
 }
