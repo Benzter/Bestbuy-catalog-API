@@ -14,4 +14,9 @@ export class ProductsService {
         const result = await newProduct.save();
         return result;
     }
+
+    async getAllProduct() {
+        const products = await this.productModel.find().exec();
+        return [...products]
+    }
 }
