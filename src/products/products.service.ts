@@ -22,7 +22,7 @@ export class ProductsService {
             title: prod.title,
             price: prod.price,
             brand: prod.brand,
-            imgUrl: prod.imageUrl
+            imgUrl: prod.imageUrl,
         }))
     }
 
